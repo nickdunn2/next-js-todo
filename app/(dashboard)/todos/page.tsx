@@ -2,7 +2,7 @@ import db from '@/utils/db'
 import { Todo } from "@prisma/client"
 import TodoList from "@/components/TodoList"
 
-const getData = async () => {
+const getData = async (): Promise<Todo[]> => {
   const todos = await db.todo.findMany({})
   return todos
 }
