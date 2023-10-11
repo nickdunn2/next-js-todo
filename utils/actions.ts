@@ -16,3 +16,14 @@ export const createTodo = async (formData: FormData) => {
   // update todos page. this wasn't needed? maybe automatically happens in latest Next.js?
   // revalidatePath('/todos')
 }
+
+export const completeTodo = async (id: string) => {
+  await db.todo.update({
+    where: { id },
+    data: {
+      completed: true
+    }
+  })
+
+  revalidatePath('/todos')
+}
